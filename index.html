@@ -1,1 +1,717 @@
-<h1>You're gay as fuck</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinAudio — Your Music. Zero Ads. Absolute Freedom.</title>
+  <meta name="description" content="Stream and download high-fidelity ad-free music for Windows and Android. Featuring time-synced spicy lyrics, Discord Rich Presence, built-in equalizer, and real-time Listen Together rooms.">
+  <meta name="keywords" content="FinAudio, ad free music player, free music streaming, synchronized lyrics, discord rpc music player, open source audio player, windows music player, android music player">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FinAudio — Ad-Free Music Streaming & Synced Lyrics">
+  <meta property="og:description" content="Stream and download high-fidelity ad-free music for Windows and Android with synchronized lyrics and Discord Rich Presence.">
+  <meta property="og:image" content="assets/icon.png">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow">
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+    <div class="orb-3"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="nav-brand easter-trigger" title="FinAudio v0.5.0">
+        <img src="assets/icon.png" alt="FinAudio Icon" class="brand-icon">
+        <span class="brand-gradient">FinAudio</span>
+        <span class="nav-tag">v0.5.0</span>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#downloads">Downloads</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/SharkyBurger/FinAudio" target="_blank" rel="noopener noreferrer" class="btn-github">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="#downloads" class="btn-nav-download">Get FinAudio</a>
+        <button class="mobile-toggle" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge-wrap">
+        <div class="hero-badge easter-trigger">
+          <span class="pulse-dot"></span>
+          <span>FinAudio v0.5.0 Release is Live</span>
+        </div>
+      </div>
+
+      <h1 class="hero-title">
+        Your Music. Zero Ads.<br>
+        <span class="text-gradient">Absolute Freedom.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A lightning-fast, high-fidelity music streaming powerhouse for <strong>Windows</strong> and <strong>Android</strong>. 
+        Synchronized spicy lyrics, Discord Rich Presence, offline caching, and private Listen Together rooms.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#downloads" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download Free</span>
+        </a>
+        <a href="https://github.com/SharkyBurger/FinAudio" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.163-7.333-3.856-7.333 3.856 1.399-8.163-5.934-5.784 8.2-1.192zm0 5.702l-2.232 4.523-4.992.726 3.613 3.521-.852 4.968 4.463-2.346 4.463 2.346-.852-4.968 3.613-3.521-4.992-.726z"/>
+          </svg>
+          <span>Star on GitHub</span>
+        </a>
+      </div>
+
+      <!-- Hero App Frame Mockup -->
+      <div class="hero-mockup-wrapper">
+        <div class="mockup-glow"></div>
+        <div class="app-window-frame">
+          <div class="window-titlebar">
+            <div class="traffic-lights">
+              <span class="traffic-light close"></span>
+              <span class="traffic-light min"></span>
+              <span class="traffic-light max"></span>
+            </div>
+            <div class="window-title">
+              <span>FinAudio</span>
+              <span class="window-badge">STREAMING PROXY READY</span>
+            </div>
+            <div style="width: 50px;"></div>
+          </div>
+
+          <div class="app-window-body">
+            <!-- Sidebar -->
+            <div class="app-sidebar">
+              <span class="sidebar-category">Menu</span>
+              <div class="sidebar-item active">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                <span>Home</span>
+              </div>
+              <div class="sidebar-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span>Search</span>
+              </div>
+              <div class="sidebar-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span>Library</span>
+              </div>
+              <span class="sidebar-category">Your Music</span>
+              <div class="sidebar-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff2a5f" stroke="#ff2a5f" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span>Liked Songs</span>
+              </div>
+              <div class="sidebar-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/></svg>
+                <span>Offline Downloads</span>
+              </div>
+            </div>
+
+            <!-- Main Stage -->
+            <div class="app-main-stage">
+              <div class="mockup-now-playing">
+                <div class="album-art-wrap">
+                  <div class="album-art-img">🍕</div>
+                </div>
+                <div class="track-info-header">
+                  <div class="track-badge-row">
+                    <span class="high-res-badge">FLAC / 320kbps</span>
+                    <span class="source-badge">NO ADS</span>
+                  </div>
+                  <h2 class="track-title">Coryxkenshin pizza rap 🍕</h2>
+                  <p class="track-artist">hyunstqr • Released 2024</p>
+                </div>
+              </div>
+
+              <!-- Floating Lyrics Overlay inside preview -->
+              <div class="floating-lyrics-card">
+                <div class="lyrics-header">
+                  <span>Spicy Lyrics Sync</span>
+                  <div class="visualizer-bars">
+                    <div class="viz-bar"></div>
+                    <div class="viz-bar"></div>
+                    <div class="viz-bar"></div>
+                    <div class="viz-bar"></div>
+                    <div class="viz-bar"></div>
+                  </div>
+                </div>
+                <div class="lyrics-line" id="mockupNextLyric">Locked eyes, yeah we knew from the start</div>
+                <div class="lyrics-line active" id="mockupActiveLyric">You're my missing piece</div>
+                <div class="lyrics-line">And everything between us feels like treasure</div>
+              </div>
+
+              <!-- Mini-Player bar -->
+              <div class="app-player-bar">
+                <div class="scrubber-row">
+                  <span id="scrubberCurrentTime">1:12</span>
+                  <div class="scrubber-track">
+                    <div class="scrubber-fill"></div>
+                  </div>
+                  <span>2:40</span>
+                </div>
+                <div class="player-controls-row">
+                  <div class="playback-buttons">
+                    <button class="btn-ctrl" title="Shuffle">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                    </button>
+                    <button class="btn-ctrl" title="Previous">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+                    </button>
+                    <button class="btn-play-circle" id="mockupPlayBtn" title="Play / Pause">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="6" y="4" width="4" height="16" rx="1"/>
+                        <rect x="14" y="4" width="4" height="16" rx="1"/>
+                      </svg>
+                    </button>
+                    <button class="btn-ctrl" title="Next">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+                    </button>
+                    <button class="btn-ctrl" title="Repeat">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                    </button>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-size: 0.8rem;">
+                    <span>Discord RPC Connected</span>
+                    <span style="color: #ff2a5f;">♥ Liked</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Ribbon -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>100% Free</h3>
+          <p>Zero advertisements, subscriptions, or paywalls.</p>
+        </div>
+        <div class="stat-item">
+          <h3>Lossless</h3>
+          <p>Full bitrate YouTube & Spotify audio proxy.</p>
+        </div>
+        <div class="stat-item">
+          <h3>Real-time Lyrics</h3>
+          <p>Karaoke time-synced + floating spicy popup.</p>
+        </div>
+        <div class="stat-item">
+          <h3>Multi-Platform</h3>
+          <p>Native performance on Windows & Android.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features Section -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Next-Gen Audio Experience</span>
+        <h2 class="section-title">Engineered For Pure Audio Bliss</h2>
+        <p class="section-desc">
+          FinAudio packs everything audiophiles and casual listeners crave into a streamlined, high-speed interface.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Synchronized Spicy Lyrics</h3>
+            <p class="feature-desc">
+              Karaoke word-by-word and line-by-line synced lyrics. Open a floating draggable spicy lyrics popup over your games, desktop, or mobile apps with neon glow and custom scroll modes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap cyan">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Offline Music Downloads</h3>
+            <p class="feature-desc">
+              Going off the grid or traveling? Download individual tracks or entire playlists directly to local storage with embedded album artwork, lyrics, and metadata for seamless offline playback.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap purple">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Listen Together Rooms</h3>
+            <p class="feature-desc">
+              Sync audio playback with friends across the globe in real time powered by low-latency Supabase channels. Queue tracks together, vote, and vibe simultaneously.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Discord Rich Presence</h3>
+            <p class="feature-desc">
+              Flaunt your music tastes automatically. Shows your real-time song title, artist, live elapsed audio timestamps, and cover art on your Discord profile on desktop.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Parametric Equalizer</h3>
+            <p class="feature-desc">
+              Full graphic frequency bands tailored for bass lovers, vocal enthusiasts, and flat studio monitors. Choose from presets like Bass Boost, Vocal, Electronic, Rock, or sculpt your own custom curve.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap cyan">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Dynamic Themes & Canvas</h3>
+            <p class="feature-desc">
+              Make FinAudio truly yours. Choose from custom accent colors, OLED black mode, vibrant neon accents, background artwork wallpapers, and animated canvas effects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Experience Showcase -->
+  <section class="section" id="experience" style="background: rgba(14, 16, 22, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Seamless Multi-Device Ecosystem</span>
+        <h2 class="section-title">Designed For Any Screen</h2>
+        <p class="section-desc">
+          Whether you're gaming at your desk, studying on a laptop, or on the go with your phone, FinAudio adapts seamlessly.
+        </p>
+      </div>
+
+      <div class="experience-tabs-header">
+        <button class="exp-tab-btn active" data-target="exp-desktop">💻 Desktop (Windows)</button>
+        <button class="exp-tab-btn" data-target="exp-mobile">📱 Mobile (Android)</button>
+        <button class="exp-tab-btn" data-target="exp-lyrics">✨ Floating Spicy Lyrics</button>
+        <button class="exp-tab-btn" data-target="exp-sync">👥 Listen Together</button>
+      </div>
+
+      <!-- Tab Content: Desktop -->
+      <div class="exp-tab-content active" id="exp-desktop">
+        <div class="exp-text">
+          <h3>Full-Stage Desktop Experience</h3>
+          <p>
+            Native Windows 64-bit performance powered by libmpv. Low CPU overhead, hardware acceleration, Windows media transport controls (SMTC), and system tray integration.
+          </p>
+          <ul class="exp-feature-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Instant hotkeys, media keys, and system taskbar controls</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Discord Rich Presence with real-time album cover art</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Portable zero-install edition available for quick USB use</span>
+            </li>
+          </ul>
+        </div>
+        <div class="exp-visual-card">
+          <div style="font-size: 0.8rem; color: var(--accent-rose); font-weight: 700; margin-bottom: 8px;">WINDOWS HIGHLIGHTS</div>
+          <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Lightweight. Fast. Zero bloat.</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+            FinAudio for Windows starts in under a second and uses less memory than standard web wrappers. Enjoy your local files and streamed music without slowing down games.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tab Content: Mobile -->
+      <div class="exp-tab-content" id="exp-mobile">
+        <div class="exp-text">
+          <h3>Android Mobile Powerhouse</h3>
+          <p>
+            Smooth gesture-friendly navigation with full background audio playback. Music keeps streaming seamlessly even when your phone is locked or you're multitasking.
+          </p>
+          <ul class="exp-feature-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Android notification shade & lockscreen playback controls</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Intelligent back button navigation stack with anti-accidental exit</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Offline download manager for data-free listening on transit</span>
+            </li>
+          </ul>
+        </div>
+        <div class="exp-visual-card">
+          <div style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 8px;">MOBILE OPTIMIZED</div>
+          <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Built for Battery & Flow</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+            Optimized stream buffering consumes minimal battery life and background data while providing instantaneous track transitions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tab Content: Spicy Lyrics -->
+      <div class="exp-tab-content" id="exp-lyrics">
+        <div class="exp-text">
+          <h3>Floating Spicy Lyrics Popup</h3>
+          <p>
+            Never lose your place during karaoke sessions. Pin a floating, draggable, resizable lyrics popup on top of all windows with neon glowing highlights and independent scrolling.
+          </p>
+          <ul class="exp-feature-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Real-time LRC syllable and line synchronization</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Custom neon glow, font size, and transparency controls</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Manual browse mode with one-click "Sync to audio" button</span>
+            </li>
+          </ul>
+        </div>
+        <div class="exp-visual-card">
+          <div style="font-size: 0.8rem; color: var(--accent-rose); font-weight: 700; margin-bottom: 8px;">KARAOKE REVOLUTION</div>
+          <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Sing Along Anywhere</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+            Sing your favorite tracks while browsing Discord or gaming. The spicy lyrics popup stays right where you place it without getting in your way.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tab Content: Listen Together -->
+      <div class="exp-tab-content" id="exp-sync">
+        <div class="exp-text">
+          <h3>Synchronized Listening Rooms</h3>
+          <p>
+            Share an audio vibe session with friends no matter where they are. Join or host private rooms with synchronized play, pause, and seek commands in milliseconds.
+          </p>
+          <ul class="exp-feature-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Realtime low-latency room connection via Supabase</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Shared playlist queues and automatic participant sync</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cross-platform: Windows users can sync with Android users</span>
+            </li>
+          </ul>
+        </div>
+        <div class="exp-visual-card">
+          <div style="font-size: 0.8rem; color: var(--accent-purple); font-weight: 700; margin-bottom: 8px;">SOCIAL AUDIO</div>
+          <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Stream As A Squad</div>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
+            Tired of sharing music over choppy voice calls? Listen Together streams lossless audio directly to everyone's device simultaneously.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads Section -->
+  <section class="section download-section" id="downloads">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get FinAudio v0.5.0</span>
+        <h2 class="section-title">Download For Your Platform</h2>
+        <p class="section-desc">
+          Always 100% free, safe, and open source. Choose your operating system below to start listening.
+        </p>
+      </div>
+
+      <div class="download-cards-grid">
+        <!-- Windows Card -->
+        <div class="download-card highlight" id="download-windows">
+          <div>
+            <div class="card-platform-header">
+              <div class="platform-icon" style="color: #00a4ef;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                </svg>
+              </div>
+              <div class="platform-info">
+                <h3>Windows</h3>
+                <span>Windows 10 / 11 (64-bit)</span>
+              </div>
+            </div>
+            <p class="download-card-desc">
+              Full desktop audio workstation with Discord Rich Presence, lyrics popup, and hardware volume shortcuts.
+            </p>
+          </div>
+
+          <div class="download-actions-wrap">
+            <a href="https://github.com/SharkyBurger/FinAudio/releases/latest" class="btn-download-primary" target="_blank" rel="noopener noreferrer">
+              <span>Setup Installer (.exe)</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/SharkyBurger/FinAudio/releases/latest" class="btn-download-sub" target="_blank" rel="noopener noreferrer">
+              <span>Portable Version (.zip)</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">No install</span>
+            </a>
+            <div class="specs-list">
+              <span>✓ Architecture: x64 Intel / AMD</span>
+              <span>✓ Per-User Install (No admin UAC needed)</span>
+              <span>✓ Inno Setup verified packaging</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Android Card -->
+        <div class="download-card" id="download-android">
+          <div>
+            <div class="card-platform-header">
+              <div class="platform-icon" style="color: #3ddc84;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4116 13.8533 8.125 12 8.125c-1.8533 0-3.5902.2866-5.1368.8247L4.8409 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+                </svg>
+              </div>
+              <div class="platform-info">
+                <h3>Android</h3>
+                <span>Android 8.0+ (Oreo & above)</span>
+              </div>
+            </div>
+            <p class="download-card-desc">
+              Native APK with background playback, notification player, lockscreen album art, and data-saving offline downloads.
+            </p>
+          </div>
+
+          <div class="download-actions-wrap">
+            <a href="https://github.com/SharkyBurger/FinAudio/releases/latest" class="btn-download-primary" target="_blank" rel="noopener noreferrer">
+              <span>Download APK (.apk)</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </a>
+            <div class="specs-list">
+              <span>✓ Formats: arm64-v8a, armeabi-v7a, x86_64</span>
+              <span>✓ Seamless background audio & gesture back navigation</span>
+              <span>✓ Zero telemetry or tracker permissions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Installation Guide Box -->
+      <div class="install-guide-box">
+        <h4>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Installation Tips
+        </h4>
+        <p>
+          <strong>Windows SmartScreen notice:</strong> Because FinAudio is an indie open-source app distributed directly without a $400/year enterprise certificate, Windows SmartScreen may show a prompt. Click <em>"More info"</em> and select <em>"Run anyway"</em>, or simply use the <strong>Portable (.zip)</strong> version which requires no installation.
+          <br><br>
+          <strong>Android APK notice:</strong> When downloading the APK, enable <em>"Install unknown apps"</em> for your browser or file manager when prompted.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Got Questions?</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Everything you need to know about FinAudio, security, and features.</p>
+      </div>
+
+      <div class="faq-wrap">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>Is FinAudio completely free? Are there hidden fees?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes! FinAudio is 100% free and open-source. There are no subscriptions, paywalls, or inserted ads. It was created by SharkyBurger as a passion project for friends and music lovers to enjoy their tunes without interruptions.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How does FinAudio stream music and fetch lyrics?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              FinAudio connects to YouTube Music and Spotify metadata to deliver full album art, artist information, and high-bitrate audio streams. Real-time lyrics are automatically fetched and synced via comprehensive LRC databases.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Why did Windows or Chrome flag the installer?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Major antivirus systems and Windows SmartScreen use automated heuristic scanners that flag newly compiled, unsigned executable installers. FinAudio is completely safe and open-source. To bypass installer alerts entirely, you can download the <strong>Portable (.zip)</strong> edition, which does not require running a setup installer.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does music keep playing in the background on mobile?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Absolutely. FinAudio for Android integrates directly with the Android MediaSession service. Your music will continue playing with your screen turned off, while using other apps, or when minimized.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How does the Listen Together feature work?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Listen Together allows you to create or join a room with a unique room code. When you press play, pause, or seek, the command synchronizes to everyone in the room in real time using Supabase Realtime WebSocket channels.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about" style="border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">The Story</span>
+        <h2 class="section-title">About FinAudio</h2>
+        <p class="section-desc">
+          Born out of a simple frustration: music apps shouldn't be loaded with unskippable ads, slow interfaces, or paid tiers just to see lyrics.
+        </p>
+      </div>
+
+      <div style="max-width: 760px; margin: 0 auto; text-align: center; color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8;">
+        <p style="margin-bottom: 20px;">
+          FinAudio started as a fun personal project by <strong>SharkyBurger</strong> to create the cleanest, fastest, and most expressive music experience for daily life, friends, and family.
+        </p>
+        <p style="margin-bottom: 24px;">
+          Built with Flutter, libmpv, and modern reactive architecture, FinAudio delivers desktop-grade audio fidelity and mobile-first fluidity without compromises.
+        </p>
+        <div style="display: inline-flex; align-items: center; gap: 14px; background: rgba(255, 42, 95, 0.1); border: 1px solid rgba(255, 42, 95, 0.3); padding: 12px 24px; border-radius: var(--radius-full); color: #fff; font-size: 0.95rem;">
+          <span>🍕</span>
+          <span>Tip: Tap the version badge in the navbar 5 times for a secret surprise.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand easter-trigger">
+          <img src="assets/icon.png" alt="FinAudio" style="width: 32px; height: 32px; border-radius: 6px;">
+          <span class="brand-gradient">FinAudio</span>
+        </div>
+
+        <ul class="footer-nav">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#experience">Platforms</a></li>
+          <li><a href="#downloads">Downloads</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://github.com/SharkyBurger/FinAudio" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2024–2026 FinAudio. Created with <span class="heart">❤</span> by <strong>SharkyBurger</strong>.
+        </div>
+        <div>
+          Released under MIT License • Open Source Music Platform
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
