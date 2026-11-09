@@ -1,0 +1,156 @@
+/* FinAudio blue theme + declutter layer
+   Load AFTER styles.css:  <link rel="stylesheet" href="theme-blue.css"> */
+
+:root {
+  --blue-950: #030c22;
+  --blue-900: #04122b;
+  --blue-800: #0a1f44;
+  --blue-700: #0f2f66;
+  --blue-500: #2f7de1;
+  --blue-400: #4aa8ff;
+  --blue-300: #8fd0ff;
+
+  /* remap the old rose / purple / green accents to blues */
+  --accent-rose: #5cc8ff;
+  --accent-cyan: #7fe0ff;
+  --accent-purple: #8ab4ff;
+  --accent-green: #6ee7d8;
+
+  --text-secondary: #c3d4ec;
+  --text-muted: #94accc;
+  --border-subtle: rgba(120, 170, 255, .16);
+}
+
+/* ---------- Remove visual noise ---------- */
+.ambient-glow,
+.mockup-glow { display: none !important; }
+
+.hero { background: none; }
+
+/* ---------- Calm panels so text never fights the ocean ---------- */
+.navbar {
+  background: rgba(4, 16, 40, .82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.stats-strip {
+  background: rgba(4, 16, 40, .8);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.section {
+  background: rgba(4, 16, 40, .86);
+  padding-top: clamp(64px, 9vw, 112px);
+  padding-bottom: clamp(64px, 9vw, 112px);
+}
+#experience { background: rgba(7, 24, 56, .9) !important; }
+#about { border-top: 1px solid var(--border-subtle) !important; }
+
+.footer {
+  background: rgba(3, 12, 30, .96);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section-header { margin-bottom: 56px; }
+.section-desc { max-width: 60ch; margin-left: auto; margin-right: auto; }
+
+/* Hero text sits straight on the ocean, so give it a soft backing shadow */
+.hero-title, .hero-subtitle { text-shadow: 0 2px 24px rgba(2, 10, 30, .85); }
+
+/* ---------- Cards: flat, quiet, one consistent look ---------- */
+.feature-card,
+.download-card,
+.faq-item,
+.install-guide-box,
+.exp-visual-card {
+  background: rgba(10, 30, 68, .72);
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.feature-card:hover,
+.download-card:hover {
+  border-color: rgba(92, 200, 255, .4);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+.download-card.highlight { border-color: rgba(92, 200, 255, .45); }
+
+.app-window-frame {
+  background: rgba(5, 18, 44, .94);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 24px 60px rgba(0, 6, 20, .55);
+}
+.app-sidebar { background: rgba(4, 14, 36, .6); }
+.floating-lyrics-card { background: rgba(10, 30, 68, .85); border: 1px solid var(--border-subtle); }
+
+/* ---------- Blue accents ---------- */
+.text-gradient,
+.brand-gradient {
+  background: linear-gradient(90deg, #7fe0ff, #4aa8ff 55%, #8ab4ff) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+.btn-primary,
+.btn-nav-download,
+.btn-download-primary,
+.btn-play-circle {
+  background: linear-gradient(135deg, #2f7de1, #4aa8ff) !important;
+  color: #fff !important;
+  border: none;
+  box-shadow: 0 6px 20px rgba(47, 125, 225, .35) !important;
+}
+.btn-primary:hover,
+.btn-nav-download:hover,
+.btn-download-primary:hover { filter: brightness(1.1); }
+
+.btn-secondary,
+.btn-github,
+.btn-download-sub {
+  background: rgba(15, 47, 102, .5) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+
+.hero-badge,
+.nav-tag,
+.section-tag,
+.high-res-badge,
+.source-badge {
+  background: rgba(47, 125, 225, .16) !important;
+  border: 1px solid rgba(92, 200, 255, .3) !important;
+  color: var(--blue-300) !important;
+}
+.pulse-dot { background: var(--blue-400) !important; box-shadow: 0 0 0 0 rgba(74, 168, 255, .5); }
+.scrubber-fill { background: linear-gradient(90deg, #2f7de1, #7fe0ff) !important; }
+.viz-bar { background: var(--blue-400) !important; }
+.sidebar-item.active { background: rgba(47, 125, 225, .2) !important; color: var(--blue-300) !important; }
+.exp-tab-btn.active { background: rgba(47, 125, 225, .25) !important; border-color: rgba(92, 200, 255, .5) !important; color: #fff !important; }
+.lyrics-line.active { color: var(--blue-300) !important; text-shadow: none !important; }
+
+.feature-icon-wrap,
+.feature-icon-wrap.cyan,
+.feature-icon-wrap.purple,
+.feature-icon-wrap.green {
+  background: rgba(47, 125, 225, .18) !important;
+  color: var(--blue-300) !important;
+  border: 1px solid rgba(92, 200, 255, .25) !important;
+}
+
+/* About pill (inline-styled pink -> blue) */
+#about div[style*="inline-flex"] {
+  background: rgba(47, 125, 225, .14) !important;
+  border-color: rgba(92, 200, 255, .35) !important;
+}
+
+/* Reduced motion: also quiet the page itself */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
