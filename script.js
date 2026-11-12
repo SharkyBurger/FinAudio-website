@@ -164,4 +164,254 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.showToast = showToast;
+
+  // =========================================================================
+  // Cute Pixel Bubble Cursor Trail
+  // =========================================================================
+  (() => {
+    // Respect accessibility reduced-motion preference
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const canvas = document.createElement('canvas');
+    canvas.id = 'pixel-bubble-trail';
+    canvas.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let dpr = 1;
+    function resizeCanvas() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+      ctx.imageSmoothingEnabled = false;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+
+    // Pixel Bubble Sprites (Retro matrix: '.' = transparent, 'X' = glowing cyan rim, 'W' = white shine)
+    const BUBBLE_SPRITES = [
+      // 0: Tiny baby bubble (3x3)
+      [
+        ".X.",
+        "XWX",
+        ".X."
+      ],
+      // 1: Small cute bubble (5x5)
+      [
+        ".XXX.",
+        "XW..X",
+        "X...X",
+        "X...X",
+        ".XXX."
+      ],
+      // 2: Medium glossy bubble (7x7)
+      [
+        "..XXX..",
+        ".XWW.X.",
+        "XW...XX",
+        "X.....X",
+        "X.....X",
+        ".X...X.",
+        "..XXX.."
+      ],
+      // 3: Shiny big bubble (9x9)
+      [
+        "...XXX...",
+        "..XWWWX..",
+        ".XW...XX.",
+        "XW.....XX",
+        "X.......X",
+        "X.......X",
+        ".X.....X.",
+        "..XXXXX..",
+        "...XXX..."
+      ]
+    ];
+
+    const bubbles = [];
+    const popParticles = [];
+    let isRunning = false;
+    let lastX = null;
+    let lastY = null;
+    let lastSpawnTime = 0;
+    let lastFrameTime = performance.now();
+
+    function spawnBubble(x, y, isBurst = false) {
+      const r = Math.random();
+      const type = isBurst
+        ? (r < 0.45 ? 0 : (r < 0.85 ? 1 : 2))
+        : (r < 0.35 ? 0 : (r < 0.70 ? 1 : (r < 0.90 ? 2 : 3)));
+
+      const pixelSize = (type === 0 ? 2 : (type === 3 ? 1.5 : 2));
+
+      bubbles.push({
+        x: x + (Math.random() - 0.5) * (isBurst ? 22 : 8),
+        y: y + (Math.random() - 0.5) * (isBurst ? 22 : 8),
+        vx: (Math.random() - 0.5) * (isBurst ? 3.0 : 1.1),
+        vy: isBurst ? -(Math.random() * 2.6 + 1.2) : -(Math.random() * 1.4 + 0.8),
+        wobbleSpeed: Math.random() * 3.5 + 2.5,
+        wobbleAmp: Math.random() * 0.9 + 0.4,
+        wobbleOffset: Math.random() * Math.PI * 2,
+        type: type,
+        pixelSize: pixelSize,
+        alpha: 1.0,
+        life: 0,
+        maxLife: Math.random() * 0.65 + 0.75, // 0.75s - 1.4s
+        hue: Math.random() < 0.65 ? '#7fe0ff' : '#a8eeff'
+      });
+
+      if (!isRunning) {
+        isRunning = true;
+        lastFrameTime = performance.now();
+        requestAnimationFrame(renderBubbles);
+      }
+    }
+
+    function spawnPop(x, y, pixelSize) {
+      for (let i = 0; i < 4; i++) {
+        const angle = (i * Math.PI / 2) + (Math.PI / 4) + (Math.random() - 0.5) * 0.4;
+        const speed = Math.random() * 1.5 + 1.0;
+        popParticles.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: Math.max(1, pixelSize - 0.5),
+          alpha: 0.85,
+          life: 0,
+          maxLife: 0.16
+        });
+      }
+    }
+
+    function drawPixelBubble(b) {
+      const sprite = BUBBLE_SPRITES[b.type];
+      const ps = b.pixelSize;
+      const h = sprite.length;
+      const w = sprite[0].length;
+      const startX = Math.round(b.x - (w * ps) / 2);
+      const startY = Math.round(b.y - (h * ps) / 2);
+
+      // Translucent watery core for medium & large bubbles
+      if (b.type >= 2) {
+        ctx.fillStyle = `rgba(74, 168, 255, ${b.alpha * 0.15})`;
+        ctx.fillRect(startX + ps, startY + ps, (w - 2) * ps, (h - 2) * ps);
+      }
+
+      for (let r = 0; r < h; r++) {
+        const row = sprite[r];
+        for (let c = 0; c < w; c++) {
+          const char = row[c];
+          if (char === '.') continue;
+          if (char === 'X') {
+            ctx.fillStyle = b.hue === '#a8eeff'
+              ? `rgba(168, 238, 255, ${b.alpha * 0.88})`
+              : `rgba(127, 224, 255, ${b.alpha * 0.92})`;
+            ctx.fillRect(startX + c * ps, startY + r * ps, ps, ps);
+          } else if (char === 'W') {
+            ctx.fillStyle = `rgba(255, 255, 255, ${b.alpha * 0.96})`;
+            ctx.fillRect(startX + c * ps, startY + r * ps, ps, ps);
+          }
+        }
+      }
+    }
+
+    function renderBubbles(time) {
+      const dt = Math.min((time - lastFrameTime) / 1000, 0.1) || 0.016;
+      lastFrameTime = time;
+
+      ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+
+      // Update & render bubbles
+      for (let i = bubbles.length - 1; i >= 0; i--) {
+        const b = bubbles[i];
+        b.life += dt;
+
+        if (b.life >= b.maxLife) {
+          spawnPop(b.x, b.y, b.pixelSize);
+          bubbles.splice(i, 1);
+          continue;
+        }
+
+        b.y += b.vy;
+        b.x += b.vx + Math.sin(b.life * b.wobbleSpeed + b.wobbleOffset) * b.wobbleAmp;
+        b.vy -= 0.35 * dt;
+
+        const progress = b.life / b.maxLife;
+        b.alpha = progress < 0.7 ? 1.0 : (1.0 - (progress - 0.7) / 0.3);
+
+        drawPixelBubble(b);
+      }
+
+      // Update & render pop droplets
+      for (let i = popParticles.length - 1; i >= 0; i--) {
+        const p = popParticles[i];
+        p.life += dt;
+
+        if (p.life >= p.maxLife) {
+          popParticles.splice(i, 1);
+          continue;
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha = 1.0 - (p.life / p.maxLife);
+
+        ctx.fillStyle = `rgba(195, 240, 255, ${p.alpha * 0.9})`;
+        ctx.fillRect(Math.round(p.x), Math.round(p.y), p.size, p.size);
+      }
+
+      if (bubbles.length > 0 || popParticles.length > 0) {
+        requestAnimationFrame(renderBubbles);
+      } else {
+        isRunning = false;
+        ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+      }
+    }
+
+    // Pointer move listener
+    window.addEventListener('pointermove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      const now = performance.now();
+
+      if (lastX === null) {
+        lastX = x;
+        lastY = y;
+        lastSpawnTime = now;
+        spawnBubble(x, y);
+        return;
+      }
+
+      const dx = x - lastX;
+      const dy = y - lastY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist >= 12 || (dist >= 4 && now - lastSpawnTime > 55)) {
+        spawnBubble(x, y);
+
+        if (dist > 36) {
+          spawnBubble(lastX + dx * 0.5, lastY + dy * 0.5);
+        }
+
+        lastX = x;
+        lastY = y;
+        lastSpawnTime = now;
+      }
+    }, { passive: true });
+
+    // Cute bubble burst on clicks & taps
+    window.addEventListener('pointerdown', (e) => {
+      const burstCount = Math.floor(Math.random() * 3) + 4;
+      for (let i = 0; i < burstCount; i++) {
+        spawnBubble(e.clientX, e.clientY, true);
+      }
+    }, { passive: true });
+  })();
 });

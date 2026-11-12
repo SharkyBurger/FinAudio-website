@@ -874,6 +874,20 @@ p { color: var(--text-secondary); }
 }
 .toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
 
+/* Pixel Bubble Cursor Trail Canvas */
+#pixel-bubble-trail {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 /* Sub-download row for 32-bit and emulator APKs */
 .download-sub-row {
   display: flex;
