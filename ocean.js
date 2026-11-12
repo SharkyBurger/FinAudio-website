@@ -7,7 +7,7 @@
   style.textContent = `
     html{background:#04122b}
     body{background:transparent!important}
-    #pixel-ocean{position:fixed;inset:0;width:100vw;height:100vh;z-index:-1;
+    #pixel-ocean{position:fixed;inset:0;width:100%;height:100%;z-index:-1;
       image-rendering:crisp-edges;image-rendering:pixelated;pointer-events:none}
   `;
   document.head.appendChild(style);

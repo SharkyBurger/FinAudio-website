@@ -145,9 +145,31 @@
 }
 
 /* About pill (inline-styled pink -> blue) */
-#about div[style*="inline-flex"] {
+#about div[style*="inline-flex"],
+.about-tip-pill {
   background: rgba(47, 125, 225, .14) !important;
   border-color: rgba(92, 200, 255, .35) !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+  .section-header {
+    margin-bottom: 36px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+  .section-header {
+    margin-bottom: 28px !important;
+  }
 }
 
 /* Reduced motion: also quiet the page itself */

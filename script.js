@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileToggle.innerHTML = '☰';
       });
     });
+
+    // Close mobile nav when clicking outside navbar
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('mobile-open')) {
+        if (!e.target.closest('.navbar')) {
+          navLinks.classList.remove('mobile-open');
+          mobileToggle.innerHTML = '☰';
+        }
+      }
+    });
   }
 
   // Experience Showcase Tabs

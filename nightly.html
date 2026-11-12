@@ -50,6 +50,8 @@
           <li><a href="#whats-new">What's in Testing</a></li>
           <li><a href="#downloads">Nightly Downloads</a></li>
           <li><a href="#faq">Nightly FAQ</a></li>
+          <li class="mobile-only-action"><a href="#downloads" class="btn-nav-download" style="justify-content: center; width: 100%; margin-top: 6px;">Get Nightly</a></li>
+          <li class="mobile-only-action"><a href="https://github.com/SharkyBurger" target="_blank" rel="noopener noreferrer" style="justify-content: center; width: 100%; opacity: 0.85;">View Creator Profile ↗</a></li>
         </ul>
       </nav>
 
@@ -103,12 +105,12 @@
       </div>
 
       <!-- Warning Callout Box -->
-      <div style="max-width: 780px; margin: 0 auto; background: rgba(15, 47, 102, 0.45); border: 1px solid rgba(92, 200, 255, 0.3); border-radius: var(--radius-md); padding: 20px 24px; text-align: left; display: flex; gap: 16px; align-items: flex-start; backdrop-filter: blur(12px);">
-        <div style="font-size: 1.5rem; line-height: 1;">🧪</div>
-        <div>
-          <h4 style="font-size: 1.05rem; margin-bottom: 6px; color: #fff;">Important: Nightly builds are for testing</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
-            Nightly releases receive changes fast. While great for testing new additions early, they may occasionally contain experimental bugs, unpolished animations, or breaking tweaks. If you prefer rock-solid reliability for everyday listening, stick with the <a href="index.html#downloads" style="color: #5cc8ff; text-decoration: underline;">Stable Release</a>.
+      <div class="nightly-callout">
+        <div class="nightly-callout-icon">🧪</div>
+        <div class="nightly-callout-body">
+          <h4>Important: Nightly builds are for testing</h4>
+          <p>
+            Nightly releases receive changes fast. While great for testing new additions early, they may occasionally contain experimental bugs, unpolished animations, or breaking tweaks. If you prefer rock-solid reliability for everyday listening, stick with the <a href="index.html#downloads">Stable Release</a>.
           </p>
         </div>
       </div>
@@ -267,11 +269,11 @@
               <span>Download APK (arm64-v8a • Recommended)</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             </a>
-            <div style="display: flex; gap: 8px;">
-              <a href="downloads/nightly/FinAudio-Nightly-armeabi-v7a.apk" download="FinAudio-Nightly-armeabi-v7a.apk" class="btn-download-sub" style="flex: 1;" title="For older 32-bit Android phones">
+            <div class="download-sub-row">
+              <a href="downloads/nightly/FinAudio-Nightly-armeabi-v7a.apk" download="FinAudio-Nightly-armeabi-v7a.apk" class="btn-download-sub" title="For older 32-bit Android phones">
                 <span>armeabi-v7a (32-bit)</span>
               </a>
-              <a href="downloads/nightly/FinAudio-Nightly-x86_64.apk" download="FinAudio-Nightly-x86_64.apk" class="btn-download-sub" style="flex: 1;" title="For PC Emulators & ChromeOS">
+              <a href="downloads/nightly/FinAudio-Nightly-x86_64.apk" download="FinAudio-Nightly-x86_64.apk" class="btn-download-sub" title="For PC Emulators & ChromeOS">
                 <span>x86_64 (Emulators)</span>
               </a>
             </div>
