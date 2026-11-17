@@ -172,6 +172,269 @@
   }
 }
 
+/* ========================================================
+   Instant Download UI Feedback Button States & Toast
+   ======================================================== */
+.btn-download-primary.is-preparing {
+  background: linear-gradient(135deg, #1d5cb0, #2f7de1) !important;
+  box-shadow: 0 0 25px rgba(92, 200, 255, 0.65), 0 6px 20px rgba(47, 125, 225, .45) !important;
+  border: 1px solid rgba(168, 238, 255, 0.6) !important;
+  pointer-events: none;
+}
+
+.btn-download-primary.is-started {
+  background: linear-gradient(135deg, #166e5c, #27ae60) !important;
+  box-shadow: 0 0 25px rgba(46, 204, 113, 0.55) !important;
+  border: 1px solid rgba(110, 231, 216, 0.7) !important;
+}
+
+.btn-download-sub.is-preparing {
+  background: rgba(25, 70, 140, 0.75) !important;
+  border-color: #5cc8ff !important;
+  color: #fff !important;
+  box-shadow: 0 0 16px rgba(92, 200, 255, 0.45) !important;
+  pointer-events: none;
+}
+
+.btn-download-sub.is-started {
+  background: rgba(22, 101, 75, 0.7) !important;
+  border-color: #2ecc71 !important;
+  color: #a3f7bf !important;
+  box-shadow: 0 0 16px rgba(46, 204, 113, 0.45) !important;
+}
+
+.btn-spinner-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@keyframes spinDownloadRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.btn-pulse-ring {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-right-color: #a8eeff;
+  border-radius: 50%;
+  animation: spinDownloadRing 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+.btn-pulse-ring-sub {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(92, 200, 255, 0.35);
+  border-top-color: #5cc8ff;
+  border-radius: 50%;
+  animation: spinDownloadRing 0.75s linear infinite;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.btn-status-badge {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #a8eeff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.btn-status-badge.success {
+  background: rgba(0, 45, 25, 0.45);
+  border-color: rgba(110, 231, 216, 0.6);
+  color: #a3f7bf;
+}
+
+/* Floating Download Feedback Toast */
+.download-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100000;
+  max-width: 420px;
+  width: calc(100vw - 32px);
+  background: rgba(4, 18, 43, 0.95);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(92, 200, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(74, 168, 255, 0.25);
+  padding: 16px 18px 18px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1), border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.download-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.toast-glow {
+  position: absolute;
+  top: -35px;
+  left: 20%;
+  width: 160px;
+  height: 70px;
+  background: radial-gradient(circle, rgba(92, 200, 255, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.toast-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.toast-status-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(15, 47, 102, 0.85);
+  border: 1px solid rgba(92, 200, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.toast-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(92, 200, 255, 0.25);
+  border-top-color: #5cc8ff;
+  border-radius: 50%;
+  animation: spinDownloadRing 0.8s linear infinite;
+}
+
+.toast-check {
+  display: none;
+  color: #6ee7d8;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.download-toast.is-complete .toast-spinner {
+  display: none;
+}
+
+.download-toast.is-complete .toast-check {
+  display: block;
+}
+
+.download-toast.is-complete {
+  border-color: rgba(110, 231, 216, 0.65);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(110, 231, 216, 0.35);
+}
+
+.toast-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.toast-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.toast-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.toast-body {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.toast-file-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 47, 102, 0.65);
+  border: 1px solid rgba(92, 200, 255, 0.3);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: #a8eeff;
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.toast-tip {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.toast-progress-track {
+  margin-top: 12px;
+  height: 4px;
+  background: rgba(92, 200, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.toast-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2f7de1, #5cc8ff, #6ee7d8);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(92, 200, 255, 0.8);
+}
+
+@media (max-width: 600px) {
+  .download-toast {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    padding: 14px 16px 16px;
+  }
+}
+
 /* Reduced motion: also quiet the page itself */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }

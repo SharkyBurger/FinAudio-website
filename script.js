@@ -414,4 +414,181 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, { passive: true });
   })();
+
+  // ==========================================
+  // Instant Download UI Feedback Controller
+  // ==========================================
+  (function initDownloadFeedback() {
+    const downloadLinks = document.querySelectorAll('a[download], a[href*="downloads/"]');
+    if (!downloadLinks.length) return;
+
+    // Create toast container in DOM if missing
+    let toast = document.getElementById('download-feedback-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'download-feedback-toast';
+      toast.className = 'download-toast';
+      toast.setAttribute('role', 'alert');
+      toast.setAttribute('aria-live', 'polite');
+      toast.innerHTML = `
+        <div class="toast-glow"></div>
+        <div class="toast-header">
+          <div class="toast-status-icon">
+            <div class="toast-spinner"></div>
+            <span class="toast-check">✓</span>
+          </div>
+          <div class="toast-title-wrap">
+            <div class="toast-title">Connecting to Server...</div>
+            <div class="toast-subtitle">Preparing your download</div>
+          </div>
+          <button class="toast-close" aria-label="Close notification">×</button>
+        </div>
+        <div class="toast-body">
+          <div class="toast-file-tag">
+            <span class="file-icon">📦</span>
+            <span class="file-name">FinAudio Installer</span>
+          </div>
+          <p class="toast-tip">
+            Your download has been requested! Because the installer package is ~70–90 MB, the browser tray may take a few seconds to appear.
+          </p>
+        </div>
+        <div class="toast-progress-track">
+          <div class="toast-progress-bar"></div>
+        </div>
+      `;
+      document.body.appendChild(toast);
+
+      const closeBtn = toast.querySelector('.toast-close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          toast.classList.remove('is-visible');
+        });
+      }
+    }
+
+    let toastDismissTimer = null;
+    let phase2Timer = null;
+    let phase3Timer = null;
+    let revertTimer = null;
+
+    downloadLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        const btn = this;
+        // Save original HTML on first click
+        if (!btn.dataset.originalHtml) {
+          btn.dataset.originalHtml = btn.innerHTML;
+        }
+
+        const rawFileName = btn.getAttribute('download') || 
+                            btn.getAttribute('href').split('/').pop() || 
+                            'FinAudio Installer';
+        
+        // Instant visual button feedback
+        btn.classList.remove('is-started');
+        btn.classList.add('is-preparing');
+        
+        const isPrimary = btn.classList.contains('btn-download-primary');
+        if (isPrimary) {
+          btn.innerHTML = `
+            <div class="btn-spinner-wrap">
+              <span class="btn-pulse-ring"></span>
+              <span>Contacting Server...</span>
+            </div>
+            <span class="btn-status-badge">Preparing</span>
+          `;
+        } else {
+          btn.innerHTML = `
+            <div class="btn-spinner-wrap" style="justify-content: center; width: 100%;">
+              <span class="btn-pulse-ring-sub"></span>
+              <span>Starting...</span>
+            </div>
+          `;
+        }
+
+        // Trigger toast notification
+        const titleEl = toast.querySelector('.toast-title');
+        const subtitleEl = toast.querySelector('.toast-subtitle');
+        const fileNameEl = toast.querySelector('.file-name');
+        const progressBar = toast.querySelector('.toast-progress-bar');
+
+        if (titleEl) titleEl.textContent = 'Connecting to Server...';
+        if (subtitleEl) subtitleEl.textContent = 'Requesting file from GitHub';
+        if (fileNameEl) fileNameEl.textContent = rawFileName;
+
+        toast.classList.remove('is-complete');
+        toast.classList.add('is-visible');
+
+        // Restart progress bar animation
+        if (progressBar) {
+          progressBar.style.transition = 'none';
+          progressBar.style.width = '0%';
+          void progressBar.offsetWidth; // Force CSS reflow
+          progressBar.style.transition = 'width 6.5s cubic-bezier(0.1, 0.45, 0.3, 1)';
+          progressBar.style.width = '100%';
+        }
+
+        // Phase 2: After 3.5s -> Server streaming
+        if (phase2Timer) clearTimeout(phase2Timer);
+        phase2Timer = setTimeout(() => {
+          if (btn.classList.contains('is-preparing')) {
+            if (titleEl) titleEl.textContent = 'Transferring Payload...';
+            if (subtitleEl) subtitleEl.textContent = 'Browser download opening shortly';
+            if (isPrimary) {
+              btn.innerHTML = `
+                <div class="btn-spinner-wrap">
+                  <span class="btn-pulse-ring"></span>
+                  <span>Starting Download...</span>
+                </div>
+                <span class="btn-status-badge">Streaming</span>
+              `;
+            }
+          }
+        }, 3500);
+
+        // Phase 3: After 6s -> Download Initiated!
+        if (phase3Timer) clearTimeout(phase3Timer);
+        phase3Timer = setTimeout(() => {
+          btn.classList.remove('is-preparing');
+          btn.classList.add('is-started');
+          toast.classList.add('is-complete');
+
+          if (titleEl) titleEl.textContent = 'Download Started! 🚀';
+          if (subtitleEl) subtitleEl.textContent = 'Check your browser downloads tray';
+
+          if (isPrimary) {
+            btn.innerHTML = `
+              <div class="btn-spinner-wrap">
+                <span style="color: #6ee7d8; font-size: 1.1rem; font-weight: bold;">✓</span>
+                <span>Download Started!</span>
+              </div>
+              <span class="btn-status-badge success">Active</span>
+            `;
+          } else {
+            btn.innerHTML = `
+              <div class="btn-spinner-wrap" style="justify-content: center; width: 100%;">
+                <span style="color: #6ee7d8; font-size: 1rem; font-weight: bold;">✓</span>
+                <span>Started!</span>
+              </div>
+            `;
+          }
+        }, 6000);
+
+        // Revert button after 10s so user can click again if needed
+        if (revertTimer) clearTimeout(revertTimer);
+        revertTimer = setTimeout(() => {
+          btn.classList.remove('is-started');
+          btn.classList.remove('is-preparing');
+          if (btn.dataset.originalHtml) {
+            btn.innerHTML = btn.dataset.originalHtml;
+          }
+        }, 10000);
+
+        // Auto dismiss toast after 8.5s
+        if (toastDismissTimer) clearTimeout(toastDismissTimer);
+        toastDismissTimer = setTimeout(() => {
+          toast.classList.remove('is-visible');
+        }, 8500);
+      });
+    });
+  })();
 });
