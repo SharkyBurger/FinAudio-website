@@ -72,7 +72,7 @@
       <div class="hero-badge-wrap">
         <div class="hero-badge" style="background: rgba(92, 200, 255, 0.12); border-color: rgba(92, 200, 255, 0.35); color: #5cc8ff;">
           <span class="pulse-dot" style="background: #5cc8ff; box-shadow: 0 0 10px #5cc8ff;"></span>
-          <span>Experimental Channel • v0.5.1-nightly</span>
+          <span>Experimental Channel • v0.5.2-nightly (Nov 17, 2026)</span>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
 
       <p class="hero-subtitle">
         Bleeding-edge test builds built directly from active development. 
-        Test experimental features, newer UI improvements, and hardware optimizations before they reach the official stable release.
+        Test experimental features, newer UI improvements, album search tracklist inspection, and hardware-level audio cutoff before they reach the official stable release.
       </p>
 
       <div class="hero-cta">
@@ -102,6 +102,32 @@
           </svg>
           <span>Return to Stable</span>
         </a>
+      </div>
+
+      <!-- Latest Nightly Changelog Callout -->
+      <div class="nightly-callout" style="margin-top: 24px; margin-bottom: 16px; border-color: rgba(92, 200, 255, 0.4); background: rgba(15, 47, 102, 0.65);">
+        <div class="nightly-callout-icon">🚀</div>
+        <div class="nightly-callout-body">
+          <h4 style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <span>Build Highlights — November 17, 2026 (v0.5.2-nightly)</span>
+            <span style="font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; background: rgba(92, 200, 255, 0.2); color: #5cc8ff; font-weight: normal;">Latest Update</span>
+          </h4>
+          <p style="margin-bottom: 8px;">
+            <strong>Instant WASAPI Audio Cutoff on Close:</strong> Integrated Windows Core Audio session muting into <code>WM_CLOSE</code> and window teardown, completely stopping the ~0.5s playback ring buffer leak on app exit.
+          </p>
+          <p style="margin-bottom: 8px;">
+            <strong>Search Album & Playlist Inspector:</strong> Clicking any album or playlist from Search now opens the complete tracklist viewer with track numbering, song durations, and metadata instead of immediately auto-playing only track 1.
+          </p>
+          <p style="margin-bottom: 8px;">
+            <strong>Responsive Search Layout:</strong> Replaced stretched 2-column rectangular cards with an adaptive 1:1 square artwork grid (<code>maxCrossAxisExtent: 200</code>) and floating quick-play buttons.
+          </p>
+          <p style="margin-bottom: 8px;">
+            <strong>Persistent Search Navigation Stack:</strong> Search queries, loaded albums, active filters, and scroll positions are fully preserved when returning back from album tracklists.
+          </p>
+          <p style="margin-bottom: 0;">
+            <strong>Lightweight Offline Music Downloads:</strong> Removed redundant low-tier download quality; optimized pure AAC extraction for clean ~2.2MB song files without video track bloat.
+          </p>
+        </div>
       </div>
 
       <!-- Warning Callout Box -->
@@ -129,7 +155,91 @@
       </div>
 
       <div class="features-grid">
-        <!-- Nightly Feature 1 -->
+        <!-- Nightly Feature 1: WASAPI Mute on Close -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap" style="background: rgba(255, 75, 75, 0.15); color: #ff4b4b;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                <line x1="23" y1="9" x2="17" y2="15"/>
+                <line x1="17" y1="9" x2="23" y2="15"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Instant Hardware Audio Cutoff on Close</h3>
+            <p class="feature-desc">
+              Low-level Windows Core Audio (WASAPI) session-muter injected directly into <code>WM_CLOSE</code> and window disposal. Fully eliminates lingering ~0.5s playback ring buffer leak on app exit and Alt+F4.
+            </p>
+          </div>
+        </div>
+
+        <!-- Nightly Feature 2: Tracklist Inspector -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap cyan">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="3"/>
+                <line x1="12" y1="2" x2="12" y2="4"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Album & Playlist Tracklist Inspector</h3>
+            <p class="feature-desc">
+              Clicking an album or playlist card in search now opens the full tracklist view (<code>AlbumViewScreen</code>) with song numbers, durations, and metadata instead of abruptly auto-playing only track 1.
+            </p>
+          </div>
+        </div>
+
+        <!-- Nightly Feature 3: Responsive Search Layout -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap purple">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Responsive Search Grid & 1:1 Square Covers</h3>
+            <p class="feature-desc">
+              Replaced stretched 2-column rectangular cards with an adaptive auto-fitting grid (<code>maxCrossAxisExtent: 200</code>), clean 1:1 square artwork thumbnails, and hovering instant-play shortcuts.
+            </p>
+          </div>
+        </div>
+
+        <!-- Nightly Feature 4: Persistent Navigation Stack -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap" style="background: rgba(46, 204, 113, 0.15); color: #2ecc71;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </div>
+            <h3 class="feature-title">Persistent Search Navigation Stack</h3>
+            <p class="feature-desc">
+              Returning back from an inspected album preserves your active search query, category filter pill (e.g. <em>Albums</em>), and loaded results without resetting back to an empty screen.
+            </p>
+          </div>
+        </div>
+
+        <!-- Nightly Feature 5: Lightweight Downloads -->
+        <div class="feature-card">
+          <div>
+            <div class="feature-icon-wrap" style="background: rgba(255, 170, 0, 0.15); color: #ffaa00;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Lightweight ~2MB AAC Offline Music</h3>
+            <p class="feature-desc">
+              High-efficiency pure-Dart AAC demuxing cuts storage requirements from 12MB+ to ~2.2MB per track. Streamlined download options to Normal (128 kbps) and High (256/320 kbps).
+            </p>
+          </div>
+        </div>
+
+        <!-- Nightly Feature 6: HD Animated GIF Wallpapers -->
         <div class="feature-card">
           <div>
             <div class="feature-icon-wrap">
@@ -141,55 +251,7 @@
             </div>
             <h3 class="feature-title">HD Animated GIF Preset Wallpapers</h3>
             <p class="feature-desc">
-              All curated theme presets now feature bundled 1366&times;768 animated backdrops (Midnight Ocean, Pure OLED, Lemon Shark, Emerald Cyber, Sunset Glow, Neon Pink, Slate, Ellen Joe) with seamless gapless looping and natural color grading.
-            </p>
-          </div>
-        </div>
-
-        <!-- Nightly Feature 2 -->
-        <div class="feature-card">
-          <div>
-            <div class="feature-icon-wrap cyan">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </div>
-            <h3 class="feature-title">Refined Mobile Back Navigation</h3>
-            <p class="feature-desc">
-              Android system back swipe and back button navigation now maintain a seamless 30-entry tab history stack. The app walks backwards through visited screens instead of minimizing unexpectedly.
-            </p>
-          </div>
-        </div>
-
-        <!-- Nightly Feature 3 -->
-        <div class="feature-card">
-          <div>
-            <div class="feature-icon-wrap purple">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-            </div>
-            <h3 class="feature-title">Ultra-Lightweight Offline Music Downloads</h3>
-            <p class="feature-desc">
-              Integrated pure-Dart AAC demuxer extracts high-fidelity 128 kbps audio directly without video track bloat, cutting download sizes down from 12MB+ to just ~2.2MB per song.
-            </p>
-          </div>
-        </div>
-
-        <!-- Nightly Feature 4 -->
-        <div class="feature-card">
-          <div>
-            <div class="feature-icon-wrap" style="background: rgba(46, 204, 113, 0.15); color: #2ecc71;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-              </svg>
-            </div>
-            <h3 class="feature-title">Modern Categorized Settings & Custom Storage</h3>
-            <p class="feature-desc">
-              All-new 5-category layout with Cloud Sync management, custom offline storage folder picker with auto-migration, and secret soundboard diagnostics.
+              All curated theme presets feature bundled 1366&times;768 animated backdrops (Midnight Ocean, Pure OLED, Lemon Shark, Emerald Cyber, Sunset Glow, Neon Pink, Slate, Ellen Joe) with seamless gapless looping.
             </p>
           </div>
         </div>
@@ -202,9 +264,9 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Direct Downloads</span>
-        <h2 class="section-title">Get Nightly v0.5.1</h2>
+        <h2 class="section-title">Get Nightly v0.5.2</h2>
         <p class="section-desc">
-          Directly download the newest pre-release test builds below.
+          Directly download the newest pre-release test builds below (Updated November 17, 2026).
         </p>
       </div>
 
@@ -220,27 +282,28 @@
               </div>
               <div class="platform-info">
                 <h3>Windows (Nightly)</h3>
-                <span>Windows 10 / 11 (64-bit)</span>
+                <span>Windows 10 / 11 (64-bit) • Build Nov 17, 2026</span>
               </div>
             </div>
             <p class="download-card-desc">
-              Latest test build with bundled 1366&times;768 animated GIF wallpapers across presets, native CSV playlist file picker, and thumbnail GIF canvas.
+              Latest test build with instant WASAPI hardware audio cutoff on close, search album tracklist inspector, responsive 1:1 square artwork grid, and bundled animated GIF wallpapers.
             </p>
           </div>
 
           <div class="download-actions-wrap">
             <a href="downloads/nightly/FinAudio-Nightly-Setup.exe" download="FinAudio-Nightly-Setup.exe" class="btn-download-primary">
               <span>Nightly Setup Installer (.exe)</span>
+              <span style="font-size: 0.8rem; opacity: 0.85;">~68.8 MB</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             </a>
             <a href="downloads/nightly/FinAudio-Nightly-Portable.zip" download="FinAudio-Nightly-Portable.zip" class="btn-download-sub">
               <span>Portable Version (.zip)</span>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">No install</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">~77.1 MB • No install</span>
             </a>
             <div class="specs-list">
               <span>✓ Architecture: x64 Intel / AMD</span>
               <span>✓ Per-User Install (No admin UAC needed)</span>
-              <span>✓ Channel: Nightly Testing</span>
+              <span>✓ Channel: Nightly Testing (Build Nov 17, 2026)</span>
             </div>
           </div>
         </div>
@@ -256,30 +319,31 @@
               </div>
               <div class="platform-info">
                 <h3>Android (Nightly)</h3>
-                <span>Android 8.0+ (Oreo & above)</span>
+                <span>Android 8.0+ (Oreo & above) • Build Nov 17, 2026</span>
               </div>
             </div>
             <p class="download-card-desc">
-              Pre-release APK with GIF wallpaper support and refined back-key navigation history.
+              Pre-release APK featuring full Search album tracklist viewer, persistent back-stack history, and high-efficiency offline audio caching.
             </p>
           </div>
 
           <div class="download-actions-wrap">
             <a href="downloads/nightly/FinAudio-Nightly-arm64-v8a.apk" download="FinAudio-Nightly-arm64-v8a.apk" class="btn-download-primary">
               <span>Download APK (arm64-v8a • Recommended)</span>
+              <span style="font-size: 0.8rem; opacity: 0.85;">~87.6 MB</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             </a>
             <div class="download-sub-row">
               <a href="downloads/nightly/FinAudio-Nightly-armeabi-v7a.apk" download="FinAudio-Nightly-armeabi-v7a.apk" class="btn-download-sub" title="For older 32-bit Android phones">
-                <span>armeabi-v7a (32-bit)</span>
+                <span>armeabi-v7a (~85.1 MB)</span>
               </a>
               <a href="downloads/nightly/FinAudio-Nightly-x86_64.apk" download="FinAudio-Nightly-x86_64.apk" class="btn-download-sub" title="For PC Emulators & ChromeOS">
-                <span>x86_64 (Emulators)</span>
+                <span>x86_64 (~89.9 MB)</span>
               </a>
             </div>
             <div class="specs-list">
               <span>✓ Formats: arm64-v8a (modern), armeabi-v7a (32-bit), x86_64 (emulators)</span>
-              <span>✓ GIF background support enabled</span>
+              <span>✓ Album Tracklist Inspector & 1:1 Layout</span>
               <span>✓ Smooth gesture back navigation</span>
             </div>
           </div>
