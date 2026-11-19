@@ -72,7 +72,7 @@
       <div class="hero-badge-wrap">
         <div class="hero-badge" style="background: rgba(92, 200, 255, 0.12); border-color: rgba(92, 200, 255, 0.35); color: #5cc8ff;">
           <span class="pulse-dot" style="background: #5cc8ff; box-shadow: 0 0 10px #5cc8ff;"></span>
-          <span>Experimental Channel • v0.5.2-nightly (Nov 17, 2026)</span>
+          <span>Experimental Channel • v0.5.3-nightly (Nov 19, 2026)</span>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
 
       <p class="hero-subtitle">
         Bleeding-edge test builds built directly from active development. 
-        Test experimental features, newer UI improvements, album search tracklist inspection, and hardware-level audio cutoff before they reach the official stable release.
+        Test experimental features, newer UI improvements, automatic sound mixer unmuting, album search tracklist inspection, and hardware-level audio cutoff before they reach the official stable release.
       </p>
 
       <div class="hero-cta">
@@ -109,23 +109,23 @@
         <div class="nightly-callout-icon">🚀</div>
         <div class="nightly-callout-body">
           <h4 style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-            <span>Build Highlights — November 17, 2026 (v0.5.2-nightly)</span>
+            <span>Build Highlights — November 19, 2026 (v0.5.3-nightly)</span>
             <span style="font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; background: rgba(92, 200, 255, 0.2); color: #5cc8ff; font-weight: normal;">Latest Update</span>
           </h4>
           <p style="margin-bottom: 8px;">
-            <strong>Instant WASAPI Audio Cutoff on Close:</strong> Integrated Windows Core Audio session muting into <code>WM_CLOSE</code> and window teardown, completely stopping the ~0.5s playback ring buffer leak on app exit.
+            <strong>Windows Sound Mixer Auto-Unmute:</strong> Added native <code>IAudioSessionNotification</code> COM listener and multi-point triggers. Automatically detects new audio sessions on launch and playback, unmuting the app in the Windows Sound Mixer and restoring volume levels without manual intervention.
           </p>
           <p style="margin-bottom: 8px;">
-            <strong>Search Album & Playlist Inspector:</strong> Clicking any album or playlist from Search now opens the complete tracklist viewer with track numbering, song durations, and metadata instead of immediately auto-playing only track 1.
+            <strong>Non-Destructive Zero-Latency Close Muter:</strong> Hardware WASAPI audio session muting on <code>WM_CLOSE</code> and teardown stops lingering audio playback buffers without resetting system volume sliders to 0%.
           </p>
           <p style="margin-bottom: 8px;">
-            <strong>Responsive Search Layout:</strong> Replaced stretched 2-column rectangular cards with an adaptive 1:1 square artwork grid (<code>maxCrossAxisExtent: 200</code>) and floating quick-play buttons.
+            <strong>Search Album & Playlist Inspector:</strong> Clicking any album or playlist from Search opens the complete tracklist viewer with track numbering, song durations, and metadata instead of auto-playing track 1.
           </p>
           <p style="margin-bottom: 8px;">
-            <strong>Persistent Search Navigation Stack:</strong> Search queries, loaded albums, active filters, and scroll positions are fully preserved when returning back from album tracklists.
+            <strong>Responsive Search Grid & Persistent Navigation:</strong> 1:1 square artwork covers with adaptive columns and state-preserving back-stack navigation.
           </p>
           <p style="margin-bottom: 0;">
-            <strong>Lightweight Offline Music Downloads:</strong> Removed redundant low-tier download quality; optimized pure AAC extraction for clean ~2.2MB song files without video track bloat.
+            <strong>Full Android APK Suite Included:</strong> Updated <code>arm64-v8a</code>, <code>armeabi-v7a</code>, and <code>x86_64</code> APK packages with synchronized Dart engine fixes and lightweight AAC downloads.
           </p>
         </div>
       </div>
@@ -264,9 +264,9 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Direct Downloads</span>
-        <h2 class="section-title">Get Nightly v0.5.2</h2>
+        <h2 class="section-title">Get Nightly v0.5.3</h2>
         <p class="section-desc">
-          Directly download the newest pre-release test builds below (Updated November 17, 2026).
+          Directly download the newest pre-release test builds below (Updated November 19, 2026).
         </p>
       </div>
 
@@ -282,11 +282,11 @@
               </div>
               <div class="platform-info">
                 <h3>Windows (Nightly)</h3>
-                <span>Windows 10 / 11 (64-bit) • Build Nov 17, 2026</span>
+                <span>Windows 10 / 11 (64-bit) • Build Nov 19, 2026</span>
               </div>
             </div>
             <p class="download-card-desc">
-              Latest test build with instant WASAPI hardware audio cutoff on close, search album tracklist inspector, responsive 1:1 square artwork grid, and bundled animated GIF wallpapers.
+              Latest test build with automatic Windows Sound Mixer unmuting on startup/playback, non-destructive close muting, search album inspector, and bundled animated GIF wallpapers.
             </p>
           </div>
 
@@ -302,8 +302,8 @@
             </a>
             <div class="specs-list">
               <span>✓ Architecture: x64 Intel / AMD</span>
-              <span>✓ Per-User Install (No admin UAC needed)</span>
-              <span>✓ Channel: Nightly Testing (Build Nov 17, 2026)</span>
+              <span>✓ Auto-Unmutes Windows Mixer on launch</span>
+              <span>✓ Channel: Nightly Testing (Build Nov 19, 2026)</span>
             </div>
           </div>
         </div>
@@ -319,11 +319,11 @@
               </div>
               <div class="platform-info">
                 <h3>Android (Nightly)</h3>
-                <span>Android 8.0+ (Oreo & above) • Build Nov 17, 2026</span>
+                <span>Android 8.0+ (Oreo & above) • Build Nov 19, 2026</span>
               </div>
             </div>
             <p class="download-card-desc">
-              Pre-release APK featuring full Search album tracklist viewer, persistent back-stack history, and high-efficiency offline audio caching.
+              Latest pre-release APKs featuring full Search album tracklist viewer, updated audio channel safeguards, and high-efficiency offline audio caching.
             </p>
           </div>
 
